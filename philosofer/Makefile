@@ -6,7 +6,7 @@
 #    By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 18:04:18 by mfagri            #+#    #+#              #
-#    Updated: 2022/03/28 18:45:57 by mfagri           ###   ########.fr        #
+#    Updated: 2022/03/29 19:33:39 by mfagri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = philo.c \
 		utils.c\
-
+		init_data.c\
+		init_philos.c\
+		
+		
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
