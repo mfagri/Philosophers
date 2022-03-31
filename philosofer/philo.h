@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:21:03 by mfagri            #+#    #+#             */
-/*   Updated: 2022/03/31 17:19:04 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/03/31 22:03:37 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ int	ft_atoi(const char *str);
 void get_args(int ac, char **av,t_data *data);
 void init_data(t_data *data);
 void ft_init_philo(t_data *data);
-long long	get_time(void);
+long long get_time(void);
 #endif

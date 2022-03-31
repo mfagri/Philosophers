@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:02:32 by mfagri            #+#    #+#             */
-/*   Updated: 2022/03/31 21:12:49 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/03/31 22:06:14 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_printstatus(t_philo *philo,char *s,int b)
 {
 	pthread_mutex_lock(&philo->data->mutex);
 	if(s)
-		printf("%lld philo number %d %s\n", philo->data->last_eat[philo->num-1],philo->num,s);
+		printf("%lld philo number %d %s\n", get_time()-philo->data->currnt,philo->num,s);
 	if(b)
 		pthread_mutex_unlock(&philo->data->mutex);
 }
@@ -53,20 +53,15 @@ void ft_sleep(t_philo * philo)
 }
 void ft_eat(t_philo *philo)
 {
-	while(1)
-	{
 	pthread_mutex_lock(&philo->data->forks[philo->num - 1]);
-	philo->data->last_eat[philo->num-1] = get_time() - philo->data->currnt;
 	ft_printstatus(philo,"take frok",1);
 	pthread_mutex_lock(&philo->data->forks[philo->num % philo->data->nbp]);
 	ft_printstatus(philo,"take frok",1);
+	philo->data->last_eat[philo->num-1] = get_time() - philo->data->currnt;
 	ft_printstatus(philo,"eating",1);
 	ft_usleep(philo->data->teat);
 	pthread_mutex_unlock(&philo->data->forks[philo->num - 1]);
 	pthread_mutex_unlock(&philo->data->forks[philo->num % philo->data->nbp]);
-		break;
-	}
-	
 }
 void ft_thinking(t_philo *philo)
 {
