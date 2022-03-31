@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:09:54 by mfagri            #+#    #+#             */
-/*   Updated: 2022/03/29 18:55:17 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/03/31 17:04:15 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void init_data(t_data *data)
     
     data->philos = malloc(sizeof(t_philo)*data->nbp);
     data->forks = malloc(sizeof(pthread_mutex_t)*data->nbp);
+    data->last_eat = malloc (sizeof(long long) * data->philos->num);
         if(!data->philos || !data->forks)
         ft_error();
     while(i < data->nbp)
@@ -68,6 +69,9 @@ void init_data(t_data *data)
         if(pthread_mutex_init(&data->forks[i],NULL))
             ft_error();
         data->philos[i].num=i+1;
+        data->philos[i].data = data;
+        // data->philos[i].l_fork=i;
+        // data->philos[i].r_fork=i+1%data->nbp;
         i++;
     }
 }
