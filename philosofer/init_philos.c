@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:02:32 by mfagri            #+#    #+#             */
-/*   Updated: 2022/03/31 22:06:14 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/03 18:23:35 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void ft_printstatus(t_philo *philo,char *s,int b)
 }
 void  ft_usleep(int time)
 {
-	// long long curr;
+	long long curr;
 	
-	// curr = get_time();
-	// usleep((time - (time * 0.03)) * 1000);
-	// while ((get_time() - curr) < time)
-	// 	usleep(1);
-	long long	t;
-
-	t = get_time();
-	while (get_time() - t < time)
+	curr = get_time();
+	usleep((time - (time * 0.03)) * 1000);
+	while ((get_time() - curr) < time)
 		usleep(1);
+	// long long	t;
+
+	// t = get_time();
+	// while (get_time() - t < time)
+	// 	usleep(1);
 }
 
 long long	get_time(void)
@@ -57,9 +57,9 @@ void ft_eat(t_philo *philo)
 	ft_printstatus(philo,"take frok",1);
 	pthread_mutex_lock(&philo->data->forks[philo->num % philo->data->nbp]);
 	ft_printstatus(philo,"take frok",1);
-	philo->data->last_eat[philo->num-1] = get_time() - philo->data->currnt;
 	ft_printstatus(philo,"eating",1);
 	ft_usleep(philo->data->teat);
+	philo->data->last_eat[philo->num-1] = get_time();
 	pthread_mutex_unlock(&philo->data->forks[philo->num - 1]);
 	pthread_mutex_unlock(&philo->data->forks[philo->num % philo->data->nbp]);
 }
@@ -78,6 +78,12 @@ void	*routine(void * arg)
 	  ft_eat(philo);
 	  ft_sleep(philo);
 	  ft_thinking(philo);
+	  philo->is_eat += 1;
+	  if(philo->data->nfe != -1)
+	  {
+	  	if(philo->is_eat >= philo->data->nfe)
+	  		philo->data->full = 1;
+	  }
   }
   return(0);
 }
@@ -85,18 +91,19 @@ void	*routine(void * arg)
 void ft_init_philo(t_data *data)
 {
 	int i;
-	
-	//printf("%lld--\n",(time.tv_sec /1000) + (time.tv_usec * 1000) - data->currnt);
+
 	i = 0;
 	data->currnt = get_time();
 	pthread_mutex_init(&data->mutex,NULL);
 	while(i < data->nbp)
 	{
+		data->last_eat[data->philos->num-1] = get_time();
 		pthread_create(&data->philos[i].ph,NULL,&routine,&data->philos[i]);
 		i++;
 	}
+  	check_death(data->philos);
 	i = 0;
-	while(i < data->nbp)
+	while(i < data->nbp && !data->die && !data->full)
 	{
 		pthread_join(data->philos[i].ph,NULL);
 		i++;

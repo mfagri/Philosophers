@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:09:54 by mfagri            #+#    #+#             */
-/*   Updated: 2022/03/31 17:04:15 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/03 18:16:26 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void init_data(t_data *data)
             ft_error();
         data->philos[i].num=i+1;
         data->philos[i].data = data;
+        data->die = 0;
+        data->full = 0;
         // data->philos[i].l_fork=i;
         // data->philos[i].r_fork=i+1%data->nbp;
         i++;
