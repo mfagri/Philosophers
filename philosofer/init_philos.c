@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:02:32 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/03 18:23:35 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/04 04:00:05 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 void ft_printstatus(t_philo *philo,char *s,int b)
 {
+	// if(philo->data->full == 1)
+	// 		return;
 	pthread_mutex_lock(&philo->data->mutex);
 	if(s)
-		printf("%lld philo number %d %s\n", get_time()-philo->data->currnt,philo->num,s);
-	if(b)
+		printf("%lld philo number %d %s\n", get_time() - philo->data->currnt, philo->num, s);
+	if (b)
 		pthread_mutex_unlock(&philo->data->mutex);
 }
 void  ft_usleep(int time)
 {
-	long long curr;
+	// long long curr;
 	
-	curr = get_time();
-	usleep((time - (time * 0.03)) * 1000);
-	while ((get_time() - curr) < time)
-		usleep(1);
-	// long long	t;
-
-	// t = get_time();
-	// while (get_time() - t < time)
+	// curr = get_time();
+	// usleep((time - (time * 0.05)) * 1000);
+	// while ((get_time() - curr) < time)
 	// 	usleep(1);
+	long long	t;
+
+	t = get_time();
+	while (get_time() - t < time)
+		usleep(1);
 }
 
 long long	get_time(void)
@@ -44,12 +46,12 @@ long long	get_time(void)
 }
 void ft_sleep(t_philo * philo)
 {
-	// pthread_mutex_lock(&philo->data->mutex);
-	// pthread_mutex_unlock(&philo->data->mutex);
-	//printf("%lld philo number %d sleep \n",get_time() - philo->data->currnt,philo->num);
 	ft_printstatus(philo,"sleeping",1);
-	//printf("%lld philo number %d is thinking\n",philo->data->last_eat[philo->num - 1],philo->num);
 	ft_usleep(philo->data->tsleep);
+}
+void ft_thinking(t_philo *philo)
+{
+	ft_printstatus(philo,"thinking",1);
 }
 void ft_eat(t_philo *philo)
 {
@@ -63,32 +65,32 @@ void ft_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->forks[philo->num - 1]);
 	pthread_mutex_unlock(&philo->data->forks[philo->num % philo->data->nbp]);
 }
-void ft_thinking(t_philo *philo)
-{
-	ft_printstatus(philo,"thinking",1);
-}
 void	*routine(void * arg)
 {
   t_philo *philo;
+  int		is_eat = 0;
   philo = (t_philo *)arg;
   if (philo->num % 2)
 	usleep(1000);
   while(1)
   {
-	  ft_eat(philo);
-	  ft_sleep(philo);
-	  ft_thinking(philo);
-	  philo->is_eat += 1;
+	ft_eat(philo);
+	is_eat += 1;
 	  if(philo->data->nfe != -1)
 	  {
-	  	if(philo->is_eat >= philo->data->nfe)
-	  		philo->data->full = 1;
+	  	if(is_eat > philo->data->nfe)
+		  {
+	  		philo->data->die = 2;
+		  	break;
+		  }
 	  }
+	 ft_sleep(philo);
+	 ft_thinking(philo);
   }
-  return(0);
+  return(NULL);
 }
 
-void ft_init_philo(t_data *data)
+void* ft_init_philo(t_data *data)
 {
 	int i;
 
@@ -103,9 +105,10 @@ void ft_init_philo(t_data *data)
 	}
   	check_death(data->philos);
 	i = 0;
-	while(i < data->nbp && !data->die && !data->full)
+	while(i < data->nbp && !data->die)
 	{
 		pthread_join(data->philos[i].ph,NULL);
 		i++;
 	}
+	return(NULL);
 }

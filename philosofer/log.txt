@@ -1,0 +1,152 @@
+0 philo number 2 take frok
+0 philo number 2 take frok
+0 philo number 2 eating
+0 philo number 4 take frok
+0 philo number 4 take frok
+0 philo number 4 eating
+200 philo number 2 sleeping
+200 philo number 3 take frok
+200 philo number 3 take frok
+200 philo number 3 eating
+200 philo number 1 take frok
+200 philo number 1 take frok
+200 philo number 1 eating
+200 philo number 4 sleeping
+400 philo number 4 thinking
+400 philo number 1 sleeping
+400 philo number 3 sleeping
+400 philo number 4 take frok
+400 philo number 4 take frok
+400 philo number 4 eating
+400 philo number 2 thinking
+400 philo number 2 take frok
+400 philo number 2 take frok
+400 philo number 2 eating
+600 philo number 4 sleeping
+600 philo number 1 thinking
+600 philo number 1 take frok
+600 philo number 1 take frok
+600 philo number 1 eating
+600 philo number 3 thinking
+600 philo number 3 take frok
+600 philo number 3 take frok
+600 philo number 3 eating
+600 philo number 2 sleeping
+800 philo number 4 thinking
+800 philo number 1 sleeping
+800 philo number 2 thinking
+800 philo number 2 take frok
+800 philo number 2 take frok
+800 philo number 2 eating
+800 philo number 4 take frok
+800 philo number 4 take frok
+800 philo number 4 eating
+800 philo number 3 sleeping
+1000 philo number 2 sleeping
+1000 philo number 4 sleeping
+1000 philo number 3 thinking
+1000 philo number 3 take frok
+1000 philo number 3 take frok
+1000 philo number 3 eating
+1000 philo number 1 thinking
+1000 philo number 1 take frok
+1000 philo number 1 take frok
+1000 philo number 1 eating
+1200 philo number 1 sleeping
+1200 philo number 3 sleeping
+1200 philo number 2 thinking
+1200 philo number 2 take frok
+1200 philo number 2 take frok
+1200 philo number 2 eating
+1200 philo number 4 thinking
+1200 philo number 4 take frok
+1200 philo number 4 take frok
+1200 philo number 4 eating
+1400 philo number 1 thinking
+1400 philo number 1 take frok
+1400 philo number 1 take frok
+1400 philo number 1 eating
+1400 philo number 3 thinking
+1400 philo number 3 take frok
+1400 philo number 3 take frok
+1400 philo number 3 eating
+1400 philo number 2 sleeping
+1400 philo number 4 sleeping
+1600 philo number 4 thinking
+1600 philo number 2 thinking
+1600 philo number 2 take frok
+1600 philo number 2 take frok
+1600 philo number 2 eating
+1600 philo number 1 sleeping
+1600 philo number 3 sleeping
+1600 philo number 4 take frok
+1600 philo number 4 take frok
+1600 philo number 4 eating
+1800 philo number 2 sleeping
+1800 philo number 3 thinking
+1800 philo number 3 take frok
+1800 philo number 3 take frok
+1800 philo number 3 eating
+1800 philo number 1 thinking
+1800 philo number 1 take frok
+1800 philo number 1 take frok
+1800 philo number 1 eating
+1800 philo number 4 sleeping
+2000 philo number 2 thinking
+2000 philo number 4 thinking
+2000 philo number 4 take frok
+2000 philo number 3 sleeping
+2000 philo number 4 take frok
+2000 philo number 4 eating
+2000 philo number 2 take frok
+2000 philo number 2 take frok
+2000 philo number 2 eating
+2000 philo number 1 sleeping
+2200 philo number 2 sleeping
+2200 philo number 1 thinking
+2200 philo number 1 take frok
+2200 philo number 1 take frok
+2200 philo number 1 eating
+2200 philo number 3 thinking
+2200 philo number 3 take frok
+2200 philo number 3 take frok
+2200 philo number 3 eating
+2200 philo number 4 sleeping
+2400 philo number 1 sleeping
+2400 philo number 2 thinking
+2400 philo number 2 take frok
+2400 philo number 2 take frok
+2400 philo number 2 eating
+2400 philo number 3 sleeping
+2400 philo number 4 thinking
+2400 philo number 4 take frok
+2400 philo number 4 take frok
+2400 philo number 4 eating
+2600 philo number 2 sleeping
+2600 philo number 3 thinking
+2600 philo number 3 take frok
+2600 philo number 3 take frok
+2600 philo number 3 eating
+2600 philo number 1 thinking
+2600 philo number 1 take frok
+2600 philo number 1 take frok
+2600 philo number 1 eating
+2600 philo number 4 sleeping
+2800 philo number 4 thinking
+2800 philo number 1 sleeping
+2800 philo number 4 take frok
+2800 philo number 4 take frok
+2800 philo number 4 eating
+2800 philo number 3 sleeping
+2800 philo number 2 thinking
+2800 philo number 2 take frok
+2800 philo number 2 take frok
+2800 philo number 2 eating
+3000 philo number 3 thinking
+3000 philo number 3 take frok
+3000 philo number 3 take frok
+3000 philo number 3 eating
+3000 philo number 1 thinking
+3000 philo number 1 take frok
+3000 philo number 1 take frok
+3000 philo number 1 eating

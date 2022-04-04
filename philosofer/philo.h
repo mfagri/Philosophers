@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:21:03 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/03 18:16:08 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/04 01:16:46 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
 	long long	currnt;
 	long long	*last_eat;
 	pthread_mutex_t		mutex;
+	pthread_mutex_t		ful;
 	pthread_mutex_t *forks;
 	t_philo *philos;
 	int die;
@@ -51,8 +52,8 @@ void check_args(int ac,char **av);
 int	ft_atoi(const char *str);
 void get_args(int ac, char **av,t_data *data);
 void init_data(t_data *data);
-void ft_init_philo(t_data *data);
+void *ft_init_philo(t_data *data);
 long long get_time(void);
 void ft_printstatus(t_philo *philo,char *s,int b);
-int *check_death(t_philo *philo);
+void *check_death(t_philo *philo);
 #endif
