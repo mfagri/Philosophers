@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   init_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:09:54 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/11 01:16:55 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/12 00:21:27 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 void	ft_error(void)
 {
@@ -57,21 +57,6 @@ void	init_data(t_data *data)
 	int	i;
 
 	i = 0;
-	data->philos = malloc(sizeof(t_philo) * data->nbp);
-	data->forks = malloc(sizeof(pthread_mutex_t) * data->nbp);
-	data->last_eat = malloc (sizeof(long long) * data->nbp);
-	if (!data->philos || !data->forks)
-		ft_error();
-	while (i < data->nbp)
-	{
-		if (pthread_mutex_init(&data->forks[i], NULL))
-			ft_error();
-		data->philos[i].num = i + 1;
-		data->philos[i].data = data;
-		data->die = 0;
-		data->full = 0;
-		i++;
-	}
-	if (pthread_mutex_init(&data->ful, NULL))
-		ft_error();
+	data->die = 0;
+	data->full = 0;
 }

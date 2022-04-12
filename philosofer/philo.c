@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:22:53 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/05 16:27:16 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/07 17:18:51 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ int	main(int ac, char **av)
 	get_args(ac, av, &data);
 	init_data(&data);
 	ft_init_philo(&data);
+	while (1);
 }
