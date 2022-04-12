@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 22:48:54 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/12 00:45:58 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/12 00:57:47 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void *routine(void *arg)
 	t_data	*data;
 	data = (t_data *)arg;
 
-	sleep(1);
-	printf ("%d\n", data->philo.num);
-	sleep(10);
+	// sleep(1);
+	// printf ("%d\n", data->philo.num);
+	// sleep(10);
 	while (1)
 	{
 		ft_eat(data);
@@ -69,10 +69,10 @@ void ft_philo(t_data *data)
 	pthread_t   ph;
 	
 	data->currnt = get_time();
-	printf ("%d\n", getpid());
-	printf ("%d\n", data->philo.num);
+	// printf ("%d\n", getpid());
+	// printf ("%d\n", data->philo.num);
 	// sleep (10);
-	pthread_create(&ph, NULL, &routine, &data);  
+	pthread_create(&ph, NULL, &routine, data);  
 	pthread_join(ph, NULL);
 	// while(1)
 	// {
@@ -108,6 +108,7 @@ int *ft_start(t_data *data)
 		{
 			data->philo.num = i + 1;
 			ft_philo(data);
+			// usleep (100);
 			break ;
 		}
 		else
