@@ -6,56 +6,58 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:12:46 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/12 00:37:48 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/15 01:17:50 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-#include <signal.h>
-void	kill_p(t_data *data,int pid[])
+
+int	*ft_init_philo(t_data *data)
 {
-	int i;
-	
-	i = 0;
-	while (1)
+	int	i;
+	int	*pids;
+	int	pid;
+
+	ft_sem(data->philo);
+	pids = (int *)malloc(sizeof(int) * data->nbp);
+	i = -1;
+	while (++i < data->nbp)
 	{
-		if(data->die == 1 || data->die == 2)
+		pid = fork();
+		if (pid == 0)
 		{
-			while(i < data->nbp)
-			{
-				kill(pid[i],SIGKILL);
-				i++;
-			}
+			ft_ll(&data->philo[i]);
+			exit(0);
 		}
+		else
+			pids[i] = pid;
+	}
+	return (pids);
+}
+
+void	kill_p(t_data *data, int pid[])
+{
+	int	i;
+
+	i = 0;
+	waitpid(-1, NULL, 0);
+	while (i < data->nbp)
+	{
+		kill(pid[i], SIGKILL);
+		i++;
 	}
 }
-// void	*check_death(t_philo *philo)
-// {
-// 	while (1)
-// 	{
-// 		if (get_time() - philo->data->last_eat[philo->num - 1] \
-// 		>= philo->data->tdie)
-// 		{
-// 			if (philo->data->die != 2)
-// 				ft_printstatus(philo, "die", 0);
-// 				philo->data->die = 1;
-// 			break ;
-// 		}
-// 	}
-// 	return (NULL);
-// }
-int main(int ac, char **av)
-{  
-	t_data data;
-	int *pid;
-	// int i;
-	// i = 0;
+
+int	main(int ac, char **av)
+{
+	t_data	data;
+	int		*pid;
+
 	check_args(ac, av);
 	get_args(ac, av, &data);
 	init_data(&data);
-	sem_unlink("sem");
-	sem_unlink("print");
-	pid = ft_start(&data);
-	sleep (10000000);
-	// kill_p(&data,pid);
+	pid = ft_init_philo(&data);
+	sem_close(data.philo->print);
+	sem_close(data.philo->sem);
+	kill_p(&data, pid);
 }

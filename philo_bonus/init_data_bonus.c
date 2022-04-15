@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:09:54 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/12 00:21:27 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/15 01:12:23 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ void	init_data(t_data *data)
 	int	i;
 
 	i = 0;
-	data->die = 0;
-	data->full = 0;
+	data->philo = malloc(sizeof(t_philo) * data->nbp);
+	data->currnt = get_time();
+	while (i < data->nbp)
+	{
+		data->philo->last_eat = data->currnt;
+		data->philo[i].num = i + 1;
+		data->philo[i].data = data;
+		data->die = 0;
+		data->full = 0;
+		i++;
+	}
 }

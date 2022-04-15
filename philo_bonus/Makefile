@@ -6,7 +6,7 @@
 #    By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 18:04:18 by mfagri            #+#    #+#              #
-#    Updated: 2022/04/11 23:03:19 by mfagri           ###   ########.fr        #
+#    Updated: 2022/04/13 17:18:57 by mfagri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC = philo_bonus.h
 SRC = philo_bonus.c \
 		utils_bonus.c\
 		init_data_bonus.c\
-		devil.c\
+		init_philos_bonus.c\
 		
 		
 OBJ = $(SRC:.c=.o)
