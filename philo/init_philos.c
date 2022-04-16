@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:02:32 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/15 01:20:37 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/16 23:08:45 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	ft_sleep(t_philo *philo)
 {
-	ft_printstatus(philo, "sleeping", 1);
+	ft_printstatus(philo, "is sleeping", 1);
 	ft_usleep(philo->data->tsleep);
 }
 
 void	ft_thinking(t_philo *philo)
 {
-	ft_printstatus(philo, "thinking", 1);
+	ft_printstatus(philo, "is thinking", 1);
 }
 
 void	ft_eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->forks[philo->num - 1]);
-	ft_printstatus(philo, "take frok", 1);
+	ft_printstatus(philo, "has taken a fork", 1);
 	pthread_mutex_lock(&philo->data->forks[philo->num % philo->data->nbp]);
-	ft_printstatus(philo, "take frok", 1);
-	ft_printstatus(philo, "eating", 1);
+	ft_printstatus(philo, "has taken a fork", 1);
+	ft_printstatus(philo, "is eating", 1);
 	ft_usleep(philo->data->teat);
 	philo->data->last_eat[philo->num - 1] = get_time();
 	pthread_mutex_unlock(&philo->data->forks[philo->num - 1]);

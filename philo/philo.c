@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:22:53 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/15 01:19:33 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/16 23:13:54 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*check_death(t_philo *philo)
 		>= philo->data->tdie)
 		{
 			if (philo->data->die != 2)
-				ft_printstatus(philo, "die", 0);
+				ft_printstatus(philo, "died", 0);
 				philo->data->die = 1;
 			break ;
 		}
