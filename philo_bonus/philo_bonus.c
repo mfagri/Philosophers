@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:12:46 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/15 01:17:50 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/16 01:52:45 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	*ft_init_philo(t_data *data)
 	int	*pids;
 	int	pid;
 
-	ft_sem(data->philo);
 	pids = (int *)malloc(sizeof(int) * data->nbp);
 	i = -1;
 	while (++i < data->nbp)
@@ -56,6 +55,8 @@ int	main(int ac, char **av)
 	check_args(ac, av);
 	get_args(ac, av, &data);
 	init_data(&data);
+	sem_unlink("sem");
+	sem_unlink("print");
 	pid = ft_init_philo(&data);
 	sem_close(data.philo->print);
 	sem_close(data.philo->sem);

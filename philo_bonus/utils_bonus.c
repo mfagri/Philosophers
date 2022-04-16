@@ -6,24 +6,11 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:43:53 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/15 01:16:56 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/16 01:52:53 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
-void	ft_sem(t_philo *philo)
-{
-	sem_unlink("sem");
-	sem_unlink("print");
-	philo->sem = sem_open("sem", O_CREAT, 0660, philo->data->nbp / 2);
-	philo->print = sem_open("print", O_CREAT, 0660, 1);
-	if (philo->sem == SEM_FAILED || philo->print == SEM_FAILED)
-	{
-		printf ("sem failed\n");
-		return (free(philo->ph), exit(0));
-	}
-}
 
 void	ft_printstatus(t_philo *philo, char *s, int b)
 {

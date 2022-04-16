@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:13:30 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/15 01:18:26 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/16 01:55:52 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void		ft_usleep(int time);
 int			ft_atoi(const char *str);
 void		*check_death(t_data *data);
 int			*ft_start(t_data *data);
-void		ft_sem(t_philo *philo);
 void		*ft_ll(t_philo *philo);
 
 #endif
