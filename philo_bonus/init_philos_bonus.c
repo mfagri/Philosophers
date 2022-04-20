@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:02:32 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/16 02:28:46 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/18 01:45:06 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (!(philo->num % 2))
+		usleep(1000);
 	while (1)
 	{
 		ft_eat(philo);
@@ -52,10 +54,12 @@ void	*routine(void *arg)
 	return (NULL);
 }
 
-void	*ft_ll(t_philo *philo)
+void	ft_ll(t_philo *philo)
 {
 	philo->sem = sem_open("sem", O_CREAT, 0660, philo->data->nbp);
 	philo->print = sem_open("print", O_CREAT, 0660, 1);
+	if (philo->sem == SEM_FAILED || philo->print == SEM_FAILED)
+		return (free(philo->ph), exit(0));
 	pthread_create(&philo->ph, NULL, routine, philo);
 	pthread_detach(philo->ph);
 	while (1)
@@ -71,5 +75,5 @@ void	*ft_ll(t_philo *philo)
 				exit(0);
 		usleep(50);
 	}
-	return (NULL);
+	return ;
 }

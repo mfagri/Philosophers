@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:09:54 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/11 01:16:55 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/18 04:49:39 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	init_data(t_data *data)
 		data->philos[i].num = i + 1;
 		data->philos[i].data = data;
 		data->die = 0;
-		data->full = 0;
 		i++;
 	}
 	if (pthread_mutex_init(&data->ful, NULL))

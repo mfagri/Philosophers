@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:12:46 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/16 01:52:45 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/18 02:04:04 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	*ft_init_philo(t_data *data)
 	return (pids);
 }
 
-void	kill_p(t_data *data, int pid[])
+void	kill_p(t_data *data, int *pid)
 {
 	int	i;
 
@@ -45,6 +45,8 @@ void	kill_p(t_data *data, int pid[])
 		kill(pid[i], SIGKILL);
 		i++;
 	}
+	free(data->philo->ph);
+	free(pid);
 }
 
 int	main(int ac, char **av)

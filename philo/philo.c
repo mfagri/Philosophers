@@ -6,11 +6,24 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:22:53 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/16 23:13:54 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/18 04:57:13 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_free(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	pthread_mutex_destroy(&data->mutex);
+	while (++i < data->nbp)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
+	}
+	return ;
+}
 
 void	*check_death(t_philo *philo)
 {
@@ -36,4 +49,5 @@ int	main(int ac, char **av)
 	get_args(ac, av, &data);
 	init_data(&data);
 	ft_init_philo(&data);
+	ft_free(&data);
 }

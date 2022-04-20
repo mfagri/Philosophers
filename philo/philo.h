@@ -6,7 +6,7 @@
 /*   By: mfagri <mfagri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:21:03 by mfagri            #+#    #+#             */
-/*   Updated: 2022/04/05 17:58:28 by mfagri           ###   ########.fr       */
+/*   Updated: 2022/04/18 04:57:31 by mfagri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_data
 	int				teat;
 	int				tsleep;
 	int				nfe;
-	int				full;
 	long long		currnt;
 	long long		*last_eat;
 	int				die;
@@ -56,4 +55,5 @@ void		ft_printstatus(t_philo *philo, char *s, int b);
 void		*check_death(t_philo *philo);
 void		ft_sleep(t_philo *philo);
 void		ft_thinking(t_philo *philo);
+void		ft_free(t_data *data);
 #endif
